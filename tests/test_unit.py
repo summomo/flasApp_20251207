@@ -2,12 +2,10 @@
 # Tests unitaires : on teste la logique "pure Python"
 # sans (ou avec très peu) d'accès à la base ou à Flask.
 
-import os
 import pytest
-
 from datetime import date, timedelta
 
-from app import _build_postgres_uri, create_app
+from app import _build_postgres_uri
 from models import User, Task
 
 @pytest.fixture

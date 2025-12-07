@@ -5,15 +5,12 @@
 # - que le WebDriver (ChromeDriver ou GeckoDriver) soit installé et dans le PATH.
 
 import os
-import pytest
-
-IS_CI = os.environ.get("CI") == "true"
-
 import time
 
+import pytest
 from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.common.keys import Keys
+
+IS_CI = os.environ.get("CI") == "true"
 
 
 BASE_URL = "http://localhost:5000"

@@ -11,7 +11,7 @@ import pytest
 
 from app import create_app
 from extensions import db
-from models import User, Task
+from models import Task
 
 
 @pytest.fixture
