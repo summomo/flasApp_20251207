@@ -20,20 +20,19 @@ def app():
     Crée une instance d'app Flask configurée pour les tests.
     Utilise une base SQLite en mémoire.
     """
+    os.environ["DATABASE_URL"] = "sqlite:///:memory:"
+
     app = create_app()
     app.config["TESTING"] = True
-    app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite://"
     app.config["WTF_CSRF_ENABLED"] = False
 
     with app.app_context():
-        db.drop_all()
         db.create_all()
         yield app
         db.session.remove()
         db.drop_all()
 
 
-@pytest.fixture
 def client(app):
     """
     Fournit un client de test Flask.

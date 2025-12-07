@@ -35,7 +35,7 @@ def _build_postgres_uri() -> str:
 def create_app():
     app = Flask(__name__)
 
-    app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY", "dev-unsafe-secret")
+    app.config["SECRET_KEY"] = ...
     app.config["SQLALCHEMY_DATABASE_URI"] = _build_postgres_uri()
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
@@ -223,6 +223,6 @@ def register_routes(app):
 if __name__ == "__main__":
     app = create_app()
     with app.app_context():
-        from models import User, Task  # noqa: F401
+        from models import User, Task
         db.create_all()
     app.run(debug=True, port=5000, host="0.0.0.0")
