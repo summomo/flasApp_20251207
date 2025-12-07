@@ -4,6 +4,11 @@
 # - que l'app soit lancée (python app.py)
 # - que le WebDriver (ChromeDriver ou GeckoDriver) soit installé et dans le PATH.
 
+import os
+import pytest
+
+IS_CI = os.environ.get("CI") == "true"
+
 import time
 
 from selenium import webdriver
@@ -13,7 +18,7 @@ from selenium.webdriver.common.keys import Keys
 
 BASE_URL = "http://localhost:5000"
 
-
+@pytest.mark.skipif(IS_CI, reason="Skip E2E Selenium test in CI (no Chrome available)")
 def test_login_flow_e2e():
     """
     Exemple très simple :
