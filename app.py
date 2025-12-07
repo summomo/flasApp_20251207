@@ -35,7 +35,7 @@ def _build_postgres_uri() -> str:
 def create_app():
     app = Flask(__name__)
 
-    app.config["SECRET_KEY"] = ...
+    app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY", "dev-unsafe-secret")
     app.config["SQLALCHEMY_DATABASE_URI"] = _build_postgres_uri()
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
