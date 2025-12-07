@@ -2,6 +2,11 @@
 # Tests d'intégration avec le client de test Flask.
 # On teste les routes /register, /login, /tasks/new, etc.
 
+import os
+import sys
+
+sys.path.append(os.path.dirname(os.path.dirname(__file__)))
+
 import pytest
 
 from app import create_app
