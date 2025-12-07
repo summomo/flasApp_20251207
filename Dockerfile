@@ -23,4 +23,5 @@ ENV PYTHONUNBUFFERED=1
 EXPOSE 5000
 
 # Lancement de l'app comme dans l’énoncé (python app.py)
-CMD ["python", "app.py"]
+# CMD ["python", "app.py"]
+CMD ["gunicorn", "-b", "0.0.0.0:5000", "app:create_app()"]
