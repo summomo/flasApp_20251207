@@ -33,6 +33,11 @@ jobs:
         run: |
           docker build -t my-taskmanager-app .
 
+      - name: Lint code
+        run: |
+          pip install ruff
+          ruff check .
+
   push-to-dockerhub:
     if: github.ref == 'refs/heads/main'
     needs: build-and-test
